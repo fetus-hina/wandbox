@@ -12,9 +12,9 @@
   <head>
     <meta charset="UTF-8">
 
-    <title>[Wandbox]三へ( へ՞ਊ ՞)へ ﾊｯﾊｯ</title>
+    <title>Wandbox for PHP/Hack</title>
     <meta name="description" content="Wandbox is Online Compiler">
-    <meta name="author" content="melpon, kikairoya">
+    <meta name="author" content="melpon, kikairoya, fetus_hina">
 
     <meta name="viewport" content="width=device-width,initial-scale=1">
 
@@ -92,30 +92,13 @@ var URL_COMPILE = '<% url "compile" %>';
 var URL_PERMLINK = '<% url "permlink" %>';
 var USING_PERMLINK = <% if using_permlink %>true<% else %>false<% end %>;
 var JSON_CODE = <%= permlink | raw %>;
-var DEFAULT_COMPILER = 'gcc-head';
+var DEFAULT_COMPILER = 'php-5.6.8';
 var EDITOR_MODE_MAPPING = {
-  'C++': 'text/x-c++src',
-  'C': 'text/x-csrc',
-  'CPP': 'text/x-csrc',
-  'D': 'text/x-d',
-  'Ruby': 'text/x-ruby',
-  'Python': 'text/x-python',
-  'Perl': 'text/x-perl',
-  'Erlang': 'text/x-erlang',
-  'C#': 'text/x-csharp',
-  'Haskell': 'text/x-haskell',
-  'Bash script': 'text/x-sh',
-  'Lua': 'text/x-lua',
-  'PHP': 'text/x-php',
-  'Lisp': 'text/x-common-lisp',
-  'Pascal': 'text/x-pascal',
-  'Rust': 'text/x-rustsrc',
-  'Java': 'text/x-java',
-  'Groovy': 'text/x-groovy',
-  'JavaScript': 'text/javascript',
-  'CoffeeScript': 'text/x-coffeescript',
-  'Elixir': 'text/x-ruby',
-  'Scala': 'text/x-scala',
+  <% foreach lang in langinfos %>
+    <% item %>
+      '<%= lang.first %>': 'text/x-php',
+    <% end item %>
+  <% end foreach %>
 };
 var COMPILER_NAME_TO_TAB_ID = {
   <% foreach info in compinfos %>
@@ -146,12 +129,23 @@ var LANGUAGE_NAME_TO_TAB_ID = {
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="<% url "root" %>">Wandbox</a>
+        <a class="navbar-brand" href="<% url "root" %>">Wandbox for PHP/Hack</a>
       </div>
       <div class="collapse navbar-collapse" id="wandbox-navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a target="_blank" href="https://github.com/melpon/wandbox">Source</a>
+            <a target="_blank" href="http://melpon.org/wandbox/">Wandbox (Original)</a>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Source <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a target="_blank" href="https://github.com/melpon/wandbox">Original</a>
+              </li>
+              <li>
+                <a target="_blank" href="https://github.com/fetus-hina/wandbox/tree/for-php">for PHP</a>
+              <li>
+            </ul>
           </li>
           <li class="dropdown">
             <a class="dropdown-toggle" href="#" data-toggle="dropdown">Plugin <b class="caret"></b></a>
@@ -164,6 +158,33 @@ var LANGUAGE_NAME_TO_TAB_ID = {
               </li>
               <li>
                 <a href="https://gist.github.com/kikairoya/7544234" target="_blank">for xyzzy-er</a>
+              </li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a class="dropdown-toggle" href="#" data-toggle="dropdown">Link <b class="caret"></b></a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://php.net/" target="_blank">PHP</a>
+              </li>
+              <li>
+                <a href="http://hhvm.com/" target="_blank">HHVM</a>
+              </li>
+              <li>
+                <a href="http://quercus.caucho.com/" target="_blank">Quercus</a>
+              </li>
+              <li>
+                <a href="http://hippyvm.com/" target="_blank">HippyVM</a>
+              </li>
+              <li role="presentation" class="divider"></li>
+              <li>
+                <a href="https://github.com/facebook/hhvm" target="_blank">HHVM source</a>
+              </li>
+              <li>
+                <a href="https://github.com/hippyvm/hippyvm" target="_blank">HippyVM source</a>
+              </li>
+              <li>
+                <a href="https://github.com/juokaz/pyhp" target="_blank">PyHP source</a>
               </li>
             </ul>
           </li>
@@ -235,7 +256,7 @@ var LANGUAGE_NAME_TO_TAB_ID = {
           </div>
         </div>
         <div class="wandbox-dropdown-lang-area">
-          <legend>Languages</legend>
+          <legend>Categories</legend>
           <ul>
             <% foreach lang in vertical_langinfos %>
               <% item %>
