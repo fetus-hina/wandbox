@@ -1144,6 +1144,8 @@ uninstall-am: uninstall-dist_sysconfDATA
 	mostlyclean-generic pdf pdf-am ps ps-am recheck tags tags-am \
 	uninstall uninstall-am uninstall-dist_sysconfDATA
 
+cattleshed.conf: cattleshed.conf.in
+	sed 's#[@]bindir[@]#$(bindir)#g' $< > $@
 
 # Tell versions [3.59,3.63) of GNU make to not export all variables.
 # Otherwise a system limit (for SysV at least) may be exceeded.
