@@ -1014,10 +1014,7 @@ ResultWindow.prototype.post_code = function(compiler, code, codes, stdin) {
       ansi_up.ansi_to_html(
         ansi_up.escape_for_html(
           p.attr('data-text')
-        ),
-        {
-          'use_classes': true
-        }
+        )
       )
     );
     preview_paragraph = p;
@@ -1045,10 +1042,7 @@ ResultWindow.prototype.set_code = function(compiler, code, codes, stdin, outputs
               .attr('data-type', type)
               .html(
                 ansi_up.ansi_to_html(
-                  ansi_up.escape_for_html(output),
-                  {
-                    'use_classes': true
-                  }
+                  ansi_up.escape_for_html(output)
                 )
               )
               .appendTo(self._output_window());
