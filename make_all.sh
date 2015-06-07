@@ -8,16 +8,14 @@ CXXFLAGS=$CFLAGS
 pushd cattleshed
   autoreconf -i
   automake
-  ./configure --prefix=/opt/wandbox
+  ./configure --prefix=/opt/wandbox/cattleshed
   make
-  sudo make install
 popd
 
 pushd kennel2
   ./autogen.sh
-  ./configure --prefix=/opt/wandbox --with-cppcms=/opt/cppcms --with-cppdb=/opt/cppdb
+  ./configure --prefix=/opt/wandbox/wandbox --with-cppcms=/opt/wandbox/depends/cppcms --with-cppdb=/opt/wandbox/depends/cppdb
   make
-  sudo make install
 popd
 
-sudo systemctl restart wandbox-cattleshed
+sudo /home/wandbox/wandbox-sudo.sh
