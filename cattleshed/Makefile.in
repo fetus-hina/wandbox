@@ -1144,6 +1144,8 @@ uninstall-am: uninstall-dist_sysconfDATA
 	mostlyclean-generic pdf pdf-am ps ps-am recheck tags tags-am \
 	uninstall uninstall-am uninstall-dist_sysconfDATA
 
+cattleshed.conf.in: cattleshed.conf.in.d/base.conf cattleshed.conf.in.d/jail.chroot.php
+	scl enable php70 './mkconfin'
 cattleshed.conf: cattleshed.conf.in
 	sed 's#[@]bindir[@]#$(bindir)#g' $< > $@
 

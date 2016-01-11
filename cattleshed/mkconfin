@@ -1,0 +1,16 @@
+#!/usr/bin/env php
+<?php
+$json1 = json_decode(file_get_contents(__DIR__ . '/cattleshed.conf.in.d/base.conf'), true);
+$json2 = (function () {
+    $status = $lines = null;
+    exec(__DIR__ . '/cattleshed.conf.in.d/jail.chroot.php', $lines, $status);
+    if ($status !== 0) {
+        exit($status);
+    }
+    return json_decode(implode("\n", $lines), true);
+})();
+
+$merged = array_merge_recursive($json1, $json2);
+$json = json_encode($merged, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . "\n";
+
+file_put_contents(__DIR__ . '/cattleshed.conf.in', $json);
