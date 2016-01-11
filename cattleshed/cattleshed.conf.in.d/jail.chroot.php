@@ -19,6 +19,7 @@ $envs = [
     "suse-tumbleweed"   => "{$realBase}/suse-tumbleweed",
     "ubuntu1404"        => "{$realBase}/ubuntu1404",
     "ubuntu1510"        => "{$realBase}/ubuntu1510",
+    "ubuntu1604"        => "{$realBase}/ubuntu1604",
 ];
 
 // -------------------------------------------------------------------------------

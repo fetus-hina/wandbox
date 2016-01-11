@@ -508,6 +508,34 @@
             "kill-wait": 5,
             "output-limit-kill": 262144,
             "output-limit-warn": 131072
+        },
+        "ubuntu1604": {
+            "jail-command": [
+                "/usr/bin/env",
+                "HOME=/home/jail",
+                "/usr/bin/nice",
+                "@bindir@/prlimit",
+                "--core=0",
+                "--as=1073741824",
+                "--cpu=30",
+                "--data=536870912",
+                "--fsize=134217728",
+                "--nofile=256",
+                "--nproc=256",
+                "--",
+                "@bindir@/cattlegrid",
+                "--rootdir=./jail",
+                "--mount=/bin=/opt/hina/ubuntu1604/bin,/lib=/opt/hina/ubuntu1604/lib,/lib64=/opt/hina/ubuntu1604/lib64,/usr=/opt/hina/ubuntu1604/usr,/etc=/opt/hina/ubuntu1604/etc",
+                "--rwmount=/tmp=./jail/tmp,/var/tmp=./jail/tmp,/home/jail=./store",
+                "--devices=/dev/null,/dev/zero,/dev/full,/dev/random,/dev/urandom",
+                "--chdir=/home/jail",
+                "--"
+            ],
+            "program-duration": 60,
+            "compile-time-limit": 60,
+            "kill-wait": 5,
+            "output-limit-kill": 262144,
+            "output-limit-warn": 131072
         }
     }
 }
