@@ -13,6 +13,7 @@ $envs = [
     "el6"               => "{$realBase}/centos6",
     "fc22"              => "{$realBase}/fedora22",
     "fc23"              => "{$realBase}/fedora23",
+    "fc24"              => "{$realBase}/fedora24",
     "fcrh"              => "{$realBase}/fedora-rawhide",
     "gentoo"            => "{$realBase}/gentoo",
     "suse-leap42-1"     => "{$realBase}/suse-leap42-1",
@@ -20,6 +21,8 @@ $envs = [
     "ubuntu1404"        => "{$realBase}/ubuntu1404",
     "ubuntu1510"        => "{$realBase}/ubuntu1510",
     "ubuntu1604"        => "{$realBase}/ubuntu1604",
+    "ubuntu1610"        => "{$realBase}/ubuntu1610",
+    "ubuntu-testing"    => "{$realBase}/ubuntu-testing",
 ];
 
 // -------------------------------------------------------------------------------
