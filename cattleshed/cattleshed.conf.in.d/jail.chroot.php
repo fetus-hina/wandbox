@@ -3,6 +3,8 @@
 $realBase = '/opt/hina';
 $envs = [
     // "jail name"      => "directory"
+    "alpine"            => "{$realBase}/alpine",
+    "alpine-edge"       => "{$realBase}/alpine-edge",
     "arch"              => "{$realBase}/arch",
     "debian-sid"        => "{$realBase}/debian-sid",
     "debian6"           => "{$realBase}/debian6",
@@ -18,11 +20,11 @@ $envs = [
     "gentoo"            => "{$realBase}/gentoo",
     "suse-leap42-1"     => "{$realBase}/suse-leap42-1",
     "suse-tumbleweed"   => "{$realBase}/suse-tumbleweed",
+    "ubuntu-testing"    => "{$realBase}/ubuntu-testing",
     "ubuntu1404"        => "{$realBase}/ubuntu1404",
     "ubuntu1510"        => "{$realBase}/ubuntu1510",
     "ubuntu1604"        => "{$realBase}/ubuntu1604",
     "ubuntu1610"        => "{$realBase}/ubuntu1610",
-    "ubuntu-testing"    => "{$realBase}/ubuntu-testing",
 ];
 
 // -------------------------------------------------------------------------------
@@ -89,7 +91,7 @@ function mounts($baseDir, array $mounts)
     foreach ($mounts as $path => $realPath) {
         $realPath = str_replace('{base}', $baseDir, $realPath);
         if (substr($realPath, 0, 1) === '/' && !file_exists($realPath)) {
-            echo "{$realPath} does not exist.\n";
+            fwrite(STDERR, "{$realPath} does not exist.\n");
             continue;
         }
         $data[] = $path . '=' . $realPath;
