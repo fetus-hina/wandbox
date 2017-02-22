@@ -10,6 +10,7 @@ $envs = [
     "debian6"           => "{$realBase}/debian6",
     "debian7"           => "{$realBase}/debian7",
     "debian8"           => "{$realBase}/debian8",
+    "debian9"           => "{$realBase}/debina9",
     "el5"               => "{$realBase}/centos5",
     "el5php53"          => "{$realBase}/centos5-53",
     "el6"               => "{$realBase}/centos6",
