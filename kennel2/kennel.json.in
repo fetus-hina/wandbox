@@ -1,23 +1,26 @@
-{ "application" :
-    { "database": "sqlite3:db=@databasedir@/kennel_production.sqlite;@pool_size=10"
-    , "static_dir": "@staticdir@"
-    , "scheme": "https"
-    , "domain": "wandbox.fetus.jp"
-    , "map_root": ""
-    , "dispatch_root": ""
-    , "cattleshed":
-        [{ "host" : "127.0.0.1"
-         , "port" : 2012
-         }]
-    }
-, "service" :
-    { "api" : "http"
-    , "port" : 3500
-    }
-, "gzip" :
-    { "enable": false
-    }
-, "cache" :
-    { "backend": "process_shared"
+{
+    "application": {
+        "database": "sqlite3:db=@databasedir@/kennel_production.sqlite;@pool_size=10",
+        "static_dir": "@staticdir@",
+        "scheme": "https",
+        "domain": "wandbox.fetus.jp",
+        "map_root": "",
+        "dispatch_root": "",
+        "cattleshed": [
+            {
+                "host": "cattleshed",
+                "port": 2012
+            }
+        ]
+    },
+    "service": {
+        "api": "http",
+        "port": 3500
+    },
+    "gzip": {
+        "enable": false
+    },
+    "cache": {
+        "backend": "process_shared"
     }
 }
